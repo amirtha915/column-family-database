@@ -1,0 +1,185 @@
+/ # hbase shell
+2023-03-16 17:50:10,648 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 1.3.2, r1bedb5bfbb5a99067e7bc54718c3124f632b6e17, Mon Mar 19 18:47:19 UTC 2018
+
+hbase(main):001:0> create 'details','hotel','customer','liquid and cool products'
+0 row(s) in 1.9210 seconds
+
+=> Hbase::Table - family
+hbase(main):002:0> list
+TABLE                                                                                                                                                           
+family                                                                                                                                                          
+1 row(s) in 0.0590 seconds
+
+=> ["family"]
+hbase(main):003:0> put 'details','01','hotel:name','veg cafe'
+0 row(s) in 0.3020 seconds
+
+hbase(main):004:0> put 'details','01','hotel:item','tandoori'
+0 row(s) in 0.0280 seconds
+
+hbase(main):005:0> put 'details','01','hotel:cost','250'
+0 row(s) in 0.0250 seconds
+
+hbase(main):006:0> put 'details','01','hotel:location','perundurai'
+0 row(s) in 0.0140 seconds
+
+hbase(main):008:0> put 'details','01','customer:name','pranav'
+0 row(s) in 0.0300 seconds
+
+hbase(main):009:0> put 'details','01','customer:age','24'
+0 row(s) in 0.0140 seconds
+
+hbase(main):010:0> put 'details','01','customer:amount','250'
+0 row(s) in 0.0190 seconds
+
+hbase(main):011:0> put 'details','01','customer:address','uthukuli'
+0 row(s) in 0.0220 seconds
+
+hbase(main):012:0> put 'details','02','liquid and cool products:name','vannilla'
+0 row(s) in 0.0270 seconds
+
+hbase(main):013:0> put 'details','02','liquid and cool products:flavor','pineapple'
+0 row(s) in 0.0220 seconds
+
+hbase(main):014:0> put 'details','02','liquid and cool products:price','150'
+0 row(s) in 0.0160 seconds
+
+hbase(main):015:0> put 'details','02','liquid and cool products:name','falloda'
+0 row(s) in 0.0270 seconds
+
+hbase(main):016:0> put 'details','03','hotel:name','lilly crown'
+0 row(s) in 0.0250 seconds
+
+hbase(main):017:0> put 'details','03','hotel:item','seswan'
+0 row(s) in 0.0200 seconds
+
+hbase(main):018:0> put 'details','03','hotel:location','98 kk nagar'
+0 row(s) in 0.0290 seconds
+
+hbase(main):019:0> put 'details','03','customer:name','thanishku'
+0 row(s) in 0.0200 seconds
+
+hbase(main):020:0> put 'details','03','customer:mail','thanishku@gmail.com;'
+0 row(s) in 0.0190 seconds
+
+hbase(main):021:0> put 'details','03','customer:address','erode'
+0 row(s) in 0.0250 seconds
+
+hbase(main):022:0> get 'details','01'
+COLUMN                                    CELL                                                                                                                  
+ hotel:name                        timestamp=1678990472589, value=veg cafe                                                                               
+ hotel:item                        timestamp=1678990435991, value=tandoori                                                                               
+ hotel:cost                        timestamp=1678990078779, value=250                                                                               
+ hotel:location                    timestamp=1678990151721, value=perundurai                                                                      
+ customer:name                     timestamp=1678990107273, value=pranav                                                                             
+ customer:age                      timestamp=1678989957023, value=24                                                                                
+ customer:amount                   timestamp=1678990377698, value=250                                                                                
+ customer:address                  timestamp=1678990340801, value=uthukuli                                                                               
+1 row(s) in 0.1660 seconds
+
+hbase(main):023:0> get 'details','02'
+COLUMN                                    CELL                                                                                                                  
+ liquid and cool products:name          timestamp=1678990877495, value=vannilla                                                                                
+ liquid and cool products :flavor       timestamp=1678990697077, value=pineapple                                                                       
+ liquid and cool products:price         timestamp=1678990789753, value=150                                                                             
+ liquid and cool products:name          timestamp=1678990632340, value=falloda                                                                                    
+1 row(s) in 0.0490 seconds
+
+hbase(main):024:0> get 'details','03'
+COLUMN                                    CELL                                                                                                                  
+ hotel:name                         timestamp=1678991191832, value=lilly crown                                                                               
+ hotel:item                         timestamp=1678991043431, value=seswan                                                                            
+ hotel:location                     timestamp=1678990957427, value=98 kk nagar                                                                                 
+ customer:name                      timestamp=1678990989731, value=thanishku                                                                            
+ customer:mail                      timestamp=1678991104761, value=thanishku@gmail.com                                                                              
+ customer:address                   timestamp=1678991138389, value=erode                                                                    
+1 row(s) in 0.0720 seconds
+
+hbase(main):025:0> scan 'details'
+ROW                                       COLUMN+CELL                                                                                                           
+ 01                                       column=hotel:name, timestamp=1678990472589, value=veg cafe                                                      
+ 01                                       column=hotel:item, timestamp=1678990435991, value=tandoori                                                        
+ 01                                       column=hotel:cost, timestamp=1678990078779, value=250                                                      
+ 01                                       column=hotel:location,timestamp=1678990151721, value=perundurai                                               
+ 01                                       column=customer:name, timestamp=1678990107273, value=pranav                                                      
+ 01                                       column=customer:age, timestamp=1678989957023, value=24                                                            
+ 01                                       column=customer:amount, timestamp=1678990377698, value=250                                                       
+ 01                                       column=customer:address, timestamp=1678990340801, value=uthukuli                                                      
+ 02                                       column=liquid and cool products:name,timestamp=1678990877495, value=vannilla                                                       
+ 02                                       column=liquid and cool products :flavor, timestamp=1678990697077, value=pineapple                                                  
+ 02                                       column=liquid and cool products:price, timestamp=1678990789753, value=150                                                    
+ 02                                       column=liquid and cool products:name, timestamp=1678990632340, value=falloda                                                               
+ 03                                       column=hotel:name, timestamp=1678991191832, value=lilly crown                                                         
+ 03                                       column=hotel:item, timestamp=1678991043431, value=seswan                                                     
+ 03                                       column=hotel:location, timestamp=1678990957427, value=98 kk nagar                                                           
+ 03                                       column=customer:name, timestamp=1678990989731, value=thanishku                                                              
+ 03                                       column=customer:mail, timestamp=1678991104761, value=thanishku@gmail.com                                                         
+ 03                                       column=customer:address, timestamp=1678991138389, value=erode                                                     
+3 row(s) in 0.2030 seconds
+
+hbase(main):026:0> put 'details','01','hotel:item','briyani'
+0 row(s) in 0.0180 seconds
+
+hbase(main):027:0> get 'details','01'
+COLUMN                                    CELL                                                                                                                  
+ hotel:name                        timestamp=1678990472589, value=veg cafe                                                                               
+ hotel:item                        timestamp=1678990435991, value=briyani                                                                               
+ hotel:cost                        timestamp=1678990078779, value=250                                                                               
+ hotel:location                    timestamp=1678990151721, value=perundurai                                                                      
+ customer:name                     timestamp=1678990107273, value=pranav                                                                             
+ customer:age                      timestamp=1678989957023, value=24                                                                                
+ customer:amount                   timestamp=1678990377698, value=250                                                                                
+ customer:address                  timestamp=1678990340801, value=uthukuli                                                                               
+1 row(s) in 0.0900 seconds
+
+hbase(main):028:0> put 'details','02','liquid and cool products:location','Tiruppur'
+0 row(s) in 0.0250 seconds
+
+hbase(main):029:0> get 'details','02'
+COLUMN                                    CELL                                                                                                                  
+ liquid and cool products:name          timestamp=1678990877495, value=vannilla                                                                                
+ liquid and cool products :flavor       timestamp=1678990697077, value=pineapple                                                                       
+ liquid and cool products:price         timestamp=1678990789753, value=150                                                                             
+ liquid and cool products:location      timestamp=1678990632340, value=tiruppur
+ liquid and cool products:name          timestamp=1678990632340, value=falloda                                                                               
+1 row(s) in 0.0470 seconds
+
+hbase(main):030:0> delete 'details','03','customer:Address','erode'
+0 row(s) in 0.0870 seconds
+
+hbase(main):031:0> get 'details','03'
+COLUMN                                    CELL                                                                                                                  
+ hotel:name                         timestamp=1678991191832, value=lilly crown                                                                               
+ hotel:item                         timestamp=1678991043431, value=seswan                                                                            
+ hotel:location                     timestamp=1678990957427, value=98 kk nagar                                                                                 
+ customer:name                      timestamp=1678990989731, value=thanishku                                                                            
+ customer:mail                      timestamp=1678991104761, value=thanishku@gmail.com                                                                              
+ 1 row(s) in 0.0540 seconds
+
+hbase(main):032:0> scan 'family'
+ROW                                       COLUMN+CELL                                                                                                           
+ 01                                       column=hotel:name, timestamp=1678990472589, value=veg cafe                                                      
+ 01                                       column=hotel:item, timestamp=1678990435991, value=briyani                                                        
+ 01                                       column=hotel:cost, timestamp=1678990078779, value=250                                                      
+ 01                                       column=hotel:location,timestamp=1678990151721, value=perundurai                                               
+ 01                                       column=customer:name, timestamp=1678990107273, value=pranav                                                      
+ 01                                       column=customer:age, timestamp=1678989957023, value=24                                                            
+ 01                                       column=customer:amount, timestamp=1678990377698, value=250                                                       
+ 01                                       column=customer:address, timestamp=1678990340801, value=uthukuli                                                      
+ 02                                       column=liquid and cool products:name,timestamp=1678990877495, value=vannilla                                                       
+ 02                                       column=liquid and cool products :flavor, timestamp=1678990697077, value=pineapple                                                  
+ 02                                       column=liquid and cool products:price, timestamp=1678990789753, value=150                                                    
+ 02                                       column=liquid and cool products:name, timestamp=1678990632340, value=falloda 
+ 02                                       column=liquid and cool products:location, timestamp=1678990632340, value=tiruppur                                                              
+ 03                                       column=hotel:name, timestamp=1678991191832, value=lilly crown                                                         
+ 03                                       column=hotel:item, timestamp=1678991043431, value=seswan                                                     
+ 03                                       column=hotel:location, timestamp=1678990957427, value=98 kk nagar                                                           
+ 03                                       column=customer:name, timestamp=1678990989731, value=thanishku                                                              
+ 03                                       column=customer:mail, timestamp=1678991104761, value=thanishku@gmail.com                                                         
+                                                                                             
+3 row(s) in 0.1440 seconds
+
+hbase(main):033:0> 
